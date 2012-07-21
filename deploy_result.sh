@@ -10,10 +10,5 @@ DIR=harfbuzz-$1
 mkdir $DIR
 mv hb pango index.html $DIR
 
-echo Do you want to compress the directory?
-read answer
-
-if [ $answer == 'y' -o $answer == 'yes' ]; then
-    tar -cvf - $DIR | xz -9 > $DIR.tar.xz
-fi
+tar -cvf - $DIR | xz -9 > $DIR.tar.xz
 
