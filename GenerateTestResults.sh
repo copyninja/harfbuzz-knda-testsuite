@@ -13,7 +13,6 @@ LOHIT_KN=Lohit-Kannada.ttf
 
 rm -fr pango hb index.html
 
-mkdir -p hbview_test_results
 mkdir -p  hb
 mkdir -p pango
 mkdir -p  hb/Gubbi
