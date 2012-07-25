@@ -43,13 +43,13 @@ number=1
 while read ALINE
 do
     echo "processing - "$ALINE
-    hb-view $NAVILU_TTF $ALINE > hb/Navilu/$ALINE.png
-    hb-view $LOHIT_KN $ALINE > hb/Lohit-Kn/$ALINE.png
-    hb-view $GUBBI_TTF $ALINE > hb/Gubbi/$ALINE.png
+    hb-view $NAVILU_TTF $ALINE --font-size=20 > hb/Navilu/$ALINE.png
+    hb-view $LOHIT_KN $ALINE --font-size=20 > hb/Lohit-Kn/$ALINE.png
+    hb-view $GUBBI_TTF $ALINE --font-size=20 > hb/Gubbi/$ALINE.png
 
-    pango-view -q --font="Gubbi" --text="$ALINE" --output=pango/Gubbi/$ALINE.png  --dpi=1500
-    pango-view -q --font="Lohit-KnMalayalam" --text="$ALINE" --output=pango/Lohit-Kn/$ALINE.png  --dpi=1500
-    pango-view -q --font="Navilu" --text="$ALINE" --output=pango/Navilu/$ALINE.png  --dpi=1500
+    pango-view -q --font="Gubbi 20" --text="$ALINE" --output=pango/Gubbi/$ALINE.png
+    pango-view -q --font="Lohit-KnMalayalam 20" --text="$ALINE" --output=pango/Lohit-Kn/$ALINE.png
+    pango-view -q --font="Navilu 20" --text="$ALINE" --output=pango/Navilu/$ALINE.png
     echo "<tr><td align='center'> $number" >> index.html
     echo "</td><td align='center'>$ALINE" >> index.html
     echo "</td>" >> index.html
