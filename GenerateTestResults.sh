@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# invocation : GenerateTestResults.shpath-to-testdata
+# invocation : GenerateTestResults.sh path-to-testdata
 # 1. generate commands to run hb-view and pango-view with all the words read from input file. each line in input file results in one invocation of hbview
 # 2. store them in a test-result subdir
 # 3. generate an HTML page which has the following table
@@ -48,7 +48,7 @@ do
     hb-view $GUBBI_TTF $ALINE --font-size=20 > hb/Gubbi/$ALINE.png
 
     pango-view -q --font="Gubbi 20" --text="$ALINE" --output=pango/Gubbi/$ALINE.png
-    pango-view -q --font="Lohit-KnMalayalam 20" --text="$ALINE" --output=pango/Lohit-Kn/$ALINE.png
+    pango-view -q --font="Lohit-Kannada 20" --text="$ALINE" --output=pango/Lohit-Kn/$ALINE.png
     pango-view -q --font="Navilu 20" --text="$ALINE" --output=pango/Navilu/$ALINE.png
     echo "<tr><td align='center'> $number" >> index.html
     echo "</td><td align='center'>$ALINE" >> index.html
