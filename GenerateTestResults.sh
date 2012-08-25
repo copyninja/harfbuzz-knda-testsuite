@@ -43,23 +43,24 @@ number=1
 while read ALINE
 do
     echo "processing - "$ALINE
-    hb-view $NAVILU_TTF "$ALINE" --font-size=20 > hb/Navilu/${ALINE// /_}.png
-    hb-view $LOHIT_KN "$ALINE" --font-size=20 > hb/Lohit-Kn/${ALINE// /_}.png
-    hb-view $GUBBI_TTF "$ALINE" --font-size=20 > hb/Gubbi/${ALINE// /_}.png
+    filename=${ALINE// /_}
+    hb-view $NAVILU_TTF "$ALINE" --font-size=20 > hb/Navilu/$filename.png
+    hb-view $LOHIT_KN "$ALINE" --font-size=20 > hb/Lohit-Kn/$filename.png
+    hb-view $GUBBI_TTF "$ALINE" --font-size=20 > hb/Gubbi/$filename.png
 
-    pango-view -q --font="Gubbi 20" --text="$ALINE" --output=pango/Gubbi/${ALINE// /_}.png
-    pango-view -q --font="Lohit-Kannada 20" --text="$ALINE" --output=pango/Lohit-Kn/${ALINE// /_}.png
-    pango-view -q --font="Navilu 20" --text="$ALINE" --output=pango/Navilu/${ALINE// /_}.png
+    pango-view -q --font="Gubbi 20" --text="$ALINE" --output=pango/Gubbi/$filename.png
+    pango-view -q --font="Lohit-Kannada 20" --text="$ALINE" --output=pango/Lohit-Kn/$filename.png
+    pango-view -q --font="Navilu 20" --text="$ALINE" --output=pango/Navilu/$filename.png
     echo "<tr><td align='center'> $number" >> index.html
     echo "</td><td align='center'>$ALINE" >> index.html
     echo "</td>" >> index.html
     
-    echo "<td align='center'><img src='hb/Lohit-Kn/"$ALINE".png'></td>" >> index.html
-    echo "<td align='center'><img src='pango/Lohit-Kn/"$ALINE".png'></td>" >> index.html
-    echo "<td align='center'><img src='hb/Navilu/"$ALINE".png'></td>" >> index.html
-    echo "<td align='center'><img src='pango/Navilu/"$ALINE".png'></td>" >> index.html
-    echo "<td align='center'><img src='hb/Gubbi/"$ALINE".png'></td>" >> index.html
-    echo "<td align='center'><img src='pango/Gubbi/"$ALINE".png'></td></tr>" >> index.html
+    echo "<td align='center'><img src='hb/Lohit-Kn/$filename.png'></td>" >> index.html
+    echo "<td align='center'><img src='pango/Lohit-Kn/$filename.png'></td>" >> index.html
+    echo "<td align='center'><img src='hb/Navilu/$filename.png'></td>" >> index.html
+    echo "<td align='center'><img src='pango/Navilu/$filename.png'></td>" >> index.html
+    echo "<td align='center'><img src='hb/Gubbi/$filename.png'></td>" >> index.html
+    echo "<td align='center'><img src='pango/Gubbi/$filename.png'></td></tr>" >> index.html
     number=$((number + 1))
 done < $1
 
