@@ -43,13 +43,13 @@ number=1
 while read ALINE
 do
     echo "processing - "$ALINE
-    hb-view $NAVILU_TTF $ALINE --font-size=20 > hb/Navilu/$ALINE.png
-    hb-view $LOHIT_KN $ALINE --font-size=20 > hb/Lohit-Kn/$ALINE.png
-    hb-view $GUBBI_TTF $ALINE --font-size=20 > hb/Gubbi/$ALINE.png
+    hb-view $NAVILU_TTF "$ALINE" --font-size=20 > hb/Navilu/${ALINE// /_}.png
+    hb-view $LOHIT_KN "$ALINE" --font-size=20 > hb/Lohit-Kn/${ALINE// /_}.png
+    hb-view $GUBBI_TTF "$ALINE" --font-size=20 > hb/Gubbi/${ALINE// /_}.png
 
-    pango-view -q --font="Gubbi 20" --text="$ALINE" --output=pango/Gubbi/$ALINE.png
-    pango-view -q --font="Lohit-Kannada 20" --text="$ALINE" --output=pango/Lohit-Kn/$ALINE.png
-    pango-view -q --font="Navilu 20" --text="$ALINE" --output=pango/Navilu/$ALINE.png
+    pango-view -q --font="Gubbi 20" --text="$ALINE" --output=pango/Gubbi/${ALINE// /_}.png
+    pango-view -q --font="Lohit-Kannada 20" --text="$ALINE" --output=pango/Lohit-Kn/${ALINE// /_}.png
+    pango-view -q --font="Navilu 20" --text="$ALINE" --output=pango/Navilu/${ALINE// /_}.png
     echo "<tr><td align='center'> $number" >> index.html
     echo "</td><td align='center'>$ALINE" >> index.html
     echo "</td>" >> index.html
